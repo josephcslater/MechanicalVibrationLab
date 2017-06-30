@@ -38,29 +38,41 @@ Window length:
 
 Zero padding:
 `````````````
+It simply refers to adding zeros to end of a time-domain signal to increase its length.
 
 Excitation window:
 ``````````````````
 
+Response window:
+````````````````
+
 Averaging:
 ``````````
+Averaging is one technique used to decrease the noise in the system.
+
+* Linear: All blocks of data are treated equally in terms of their effect on the averaged result. A specified number of averages will be taken.
+* Exponential: Similar to linear averaging, Exponential requires a weighting factor which either increases or decreases the effect of each new data block on the resultant average.
 
 Save time-history:
 ``````````````````
 
 Trigger lever (excitaiton):
 ```````````````````````````
+Used to set the threshold for analog signal triggering. Any signal exceeding the threshold voltage will be used as the trigger.
 
 Pre-trigger samples:
 ````````````````````
+The duration of samples which you would like to store the result into the data before the trigger event.
 
 MEASUREMENT
 ============
+
 Roving:
 -------
 
 Reference node:
 ---------------
+Reference node is the sensor location node.
 
 Response node:
 --------------
