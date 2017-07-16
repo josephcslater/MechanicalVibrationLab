@@ -33,4 +33,4 @@ Table of Contents
 .. toctree::
    :maxdepth: 1
 
-`Software download  <https://github.com/openmodal/OpenModal/releases>`_
+'Software download link: <https://github.com/openmodal/OpenModal/releases>'
