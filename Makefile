@@ -24,5 +24,5 @@ gh-pages:
 	git pull origin master
 	git commit -a -m "Keep examples in sync"; true
 	git push origin; true
-	make docs
+	make html
 	ghp-import -n -p -m $(GHP_MSG) docs/_build/html
