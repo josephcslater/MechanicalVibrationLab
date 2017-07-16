@@ -25,4 +25,4 @@ gh-pages:
 	git commit -a -m "Keep examples in sync"; true
 	git push origin; true
 	make html
-	ghp-import -n -p -m $(GHP_MSG) docs/_build/html
+	ghp-import -n -p -m $(GHP_MSG) _build/html
