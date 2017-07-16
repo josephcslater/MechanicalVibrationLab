@@ -8,6 +8,8 @@ SPHINXPROJ    = OpenModal
 SOURCEDIR     = .
 BUILDDIR      = _build
 
+export GHP_MSG="Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`"
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
