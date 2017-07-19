@@ -70,21 +70,32 @@
 </div>
 <div class="section" id="zero-padding">
 <h4>Zero padding:<a class="headerlink" href="#zero-padding" title="Permalink to this headline">¶</a></h4>
+<p>It simply refers to adding zeros to end of a time-domain signal to increase its length.</p>
 </div>
 <div class="section" id="excitation-window">
 <h4>Excitation window:<a class="headerlink" href="#excitation-window" title="Permalink to this headline">¶</a></h4>
 </div>
+<div class="section" id="response-window">
+<h4>Response window:<a class="headerlink" href="#response-window" title="Permalink to this headline">¶</a></h4>
+</div>
 <div class="section" id="averaging">
 <h4>Averaging:<a class="headerlink" href="#averaging" title="Permalink to this headline">¶</a></h4>
+<p>Averaging is one technique used to decrease the noise in the system.</p>
+<ul class="simple">
+<li>Linear: All blocks of data are treated equally in terms of their effect on the averaged result. A specified number of averages will be taken.</li>
+<li>Exponential: Similar to linear averaging, Exponential requires a weighting factor which either increases or decreases the effect of each new data block on the resultant average.</li>
+</ul>
 </div>
 <div class="section" id="save-time-history">
 <h4>Save time-history:<a class="headerlink" href="#save-time-history" title="Permalink to this headline">¶</a></h4>
 </div>
 <div class="section" id="trigger-lever-excitaiton">
 <h4>Trigger lever (excitaiton):<a class="headerlink" href="#trigger-lever-excitaiton" title="Permalink to this headline">¶</a></h4>
+<p>Used to set the threshold for analog signal triggering. Any signal exceeding the threshold voltage will be used as the trigger.</p>
 </div>
 <div class="section" id="pre-trigger-samples">
 <h4>Pre-trigger samples:<a class="headerlink" href="#pre-trigger-samples" title="Permalink to this headline">¶</a></h4>
+<p>The duration of samples which you would like to store the result into the data before the trigger event.</p>
 </div>
 </div>
 </div>
@@ -95,6 +106,7 @@
 </div>
 <div class="section" id="reference-node">
 <h3>Reference node:<a class="headerlink" href="#reference-node" title="Permalink to this headline">¶</a></h3>
+<p>Reference node is the sensor location node.</p>
 </div>
 <div class="section" id="response-node">
 <h3>Response node:<a class="headerlink" href="#response-node" title="Permalink to this headline">¶</a></h3>
@@ -137,6 +149,7 @@
 <li><a class="reference internal" href="#window-length">Window length:</a></li>
 <li><a class="reference internal" href="#zero-padding">Zero padding:</a></li>
 <li><a class="reference internal" href="#excitation-window">Excitation window:</a></li>
+<li><a class="reference internal" href="#response-window">Response window:</a></li>
 <li><a class="reference internal" href="#averaging">Averaging:</a></li>
 <li><a class="reference internal" href="#save-time-history">Save time-history:</a></li>
 <li><a class="reference internal" href="#trigger-lever-excitaiton">Trigger lever (excitaiton):</a></li>
