@@ -4,12 +4,10 @@
    contain the root `toctree` directive.
 
 =======================================
-OPENMODAL::
+Mechanical Vibrations Lab Manual
 =======================================
 
-An experimental Modal Analysis Software
-=======================================
-*click on the logo to visit OpenModal website:*
+*click on the logo to visit OpenModal Software website:*
 
 .. .. include:: <isonum.txt>
 .. image:: /image/banner.png
