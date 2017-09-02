@@ -31,7 +31,17 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.ifconfig',
+    'nbsphinx',
+    'IPython.sphinxext.ipython_console_highlighting',
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -46,9 +56,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'OpenModal'
-copyright = '2017, Slovenia Ph.Ds'
-author = 'Slovenia Ph.Ds'
+project = 'Wright State University Mechanical Vibration Lab'
+copyright = '2017, Joseph C. Slater'
+author = 'Joseph C. Slater and Sainag Immidisetty'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -69,7 +79,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','**.ipynb_checkpoints']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -127,8 +137,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'OpenModal.tex', 'OpenModal Documentation',
-     'Slovenia Ph.Ds', 'manual'),
+    (master_doc, 'MechVibeLab.tex', 'Mechanical Vibration Lab Documentation',
+     'Joseph C. Slater', 'manual'),
 ]
 
 
@@ -152,6 +162,3 @@ texinfo_documents = [
      author, 'OpenModal', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-
