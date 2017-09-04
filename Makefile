@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = OpenModal
+SPHINXPROJ    = WSU_Mech_Vibes_Lab
 SOURCEDIR     = source
 BUILDDIR      = _build
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# OpenModal documentation build configuration file, created by
+# WSU Mechanical Vibration Lab documentation build configuration file, created by
 # sphinx-quickstart on Tue Jun 20 13:45:48 2017.
 #
 # This file is execfile()d with the current directory set to its
