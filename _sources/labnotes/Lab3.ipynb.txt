@@ -4,13 +4,6 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# ME 6210 Lab Notes"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
     "Lab 3\n",
     "===\n",
     "\n",
@@ -1248,6 +1241,7 @@
   }
  ],
  "metadata": {
+  "hide_input": false,
   "kernelspec": {
    "display_name": "Python 3",
    "language": "python",
@@ -1263,7 +1257,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.6.1"
+   "version": "3.6.2"
   }
  },
  "nbformat": 4,
