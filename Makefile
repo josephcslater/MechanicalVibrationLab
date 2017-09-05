@@ -4,8 +4,8 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = OpenModal
-SOURCEDIR     = .
+SPHINXPROJ    = WSU_Mech_Vibes_Lab
+SOURCEDIR     = source
 BUILDDIR      = _build
 
 export GHP_MSG="Generated gh-pages for `git log master -1 --pretty=short --abbrev-commit`"
