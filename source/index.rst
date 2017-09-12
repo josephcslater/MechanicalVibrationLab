@@ -16,9 +16,9 @@ Labs
    labnotes/Lab1.ipynb
    labnotes/Lab2.ipynb
    labnotes/Lab3.ipynb
-   labnotes/Lab1Matlab.ipynb
-   labnotes/Lab2Matlab.ipynb
-   labnotes/Lab3Matlab.ipynb
+   labnotes/Matlab1.ipynb
+   labnotes/Matlab2.ipynb
+   labnotes/Matlab3.ipynb
 
 
 Equipment and Software Setup Procedures
