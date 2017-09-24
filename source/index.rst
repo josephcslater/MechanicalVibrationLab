@@ -13,12 +13,14 @@ Labs
 .. toctree::
    :maxdepth: 1
 
+   bobcat
    labnotes/Lab1.ipynb
    labnotes/Lab2.ipynb
    labnotes/Lab3.ipynb
    labnotes/Matlab1.ipynb
    labnotes/Matlab2.ipynb
    labnotes/Matlab3.ipynb
+
 
 
 Equipment and Software Setup Procedures
