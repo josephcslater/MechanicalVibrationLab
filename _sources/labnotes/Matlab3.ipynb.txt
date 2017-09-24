@@ -4,18 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# ME 6210 Lab Notes(just for reference)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "Lab 3\n",
-    "===\n",
-    "\n",
-    "Computation of Rotating Unbalance\n",
-    "----------------------------------------------------\n"
+    "# Lab 3: Computation of Rotating Unbalance\n"
    ]
   },
   {
@@ -35,8 +24,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Using Vibration toolbox\n",
-    "========================="
+    "## Using Vibration Toolbox\n"
    ]
   },
   {
@@ -81,8 +69,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Power spectral Density plot \n",
-    "---------------------------------"
+    "## Power Spectrum Density plot \n"
    ]
   },
   {
@@ -108,8 +95,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Experimental Data Analysis\n",
-    "-------------------------------"
+    "## Experimental Data Analysis\n"
    ]
   },
   {
@@ -167,8 +153,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Acceleration Response Plot\n",
-    "-------------------------------"
+    "## Acceleration Response Plot\n"
    ]
   },
   {
@@ -193,8 +178,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Data Analysis\n",
-    "------------------"
+    "## Data Analysis\n"
    ]
   },
   {
@@ -271,8 +255,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Beam Properties\n",
-    "------------------------------"
+    "## Beam Properties\n"
    ]
   },
   {
@@ -305,8 +288,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Analytical rotating unbalance\n",
-    "-----------------------------------"
+    "## Analytical rotating unbalance\n"
    ]
   },
   {
@@ -331,31 +313,27 @@
    "source": [
     "moeA=m*Xmax*sqrt((1-r^2)^2+(2*zeta*r)^2)/(r^2)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
+  "hide_input": false,
   "kernelspec": {
-   "display_name": "MATLAB",
+   "display_name": "Matlab",
    "language": "matlab",
-   "name": "imatlab"
+   "name": "matlab"
   },
   "language_info": {
    "codemirror_mode": "octave",
    "file_extension": ".m",
+   "help_links": [
+    {
+     "text": "MetaKernel Magics",
+     "url": "https://github.com/calysto/metakernel/blob/master/metakernel/magics/README.md"
+    }
+   ],
    "mimetype": "text/x-matlab",
    "name": "matlab",
-   "nbconvert_exporter": "imatlab._exporter.MatlabExporter",
-   "pygments_lexer": "matlab",
-   "version": "9.2.0.556344 (R2017a)"
+   "version": "0.14.3"
   }
  },
  "nbformat": 4,

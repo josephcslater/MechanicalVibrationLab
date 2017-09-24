@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ME 6210 Lab Notes(just for reference) &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
+    <title>Lab 2: Frequency Domain Identification Techniques &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ME 6210 Lab Notes(just for reference)" href="Matlab3.html" />
-    <link rel="prev" title="ME 6210 Lab Notes(just for reference)" href="Matlab1.html" />
+    <link rel="next" title="Lab 3: Computation of Rotating Unbalance" href="Matlab3.html" />
+    <link rel="prev" title="Lab 1: Identification of Damping Using Log Decrement" href="Matlab1.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -203,13 +203,8 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="section" id="ME-6210-Lab-Notes(just-for-reference)">
-<h1>ME 6210 Lab Notes(just for reference)<a class="headerlink" href="#ME-6210-Lab-Notes(just-for-reference)" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="section" id="Lab-2">
-<h1>Lab 2<a class="headerlink" href="#Lab-2" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Frequency-Domain-Identification-Techniques">
-<h2>Frequency Domain Identification Techniques<a class="headerlink" href="#Frequency-Domain-Identification-Techniques" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Lab-2:-Frequency-Domain-Identification-Techniques">
+<h1>Lab 2: Frequency Domain Identification Techniques<a class="headerlink" href="#Lab-2:-Frequency-Domain-Identification-Techniques" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [3]:
@@ -220,7 +215,6 @@ div.nboutput div.output_area.stderr {
 <span class="n">close</span> <span class="n">all</span>
 <span class="n">clc</span>
 </pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="Beam-Properties">
@@ -265,9 +259,8 @@ wnunibeam =
 </pre></div></div>
 </div>
 </div>
-</div>
 <div class="section" id="Freq-versus-Magnitude-plot">
-<h1>Freq versus Magnitude plot<a class="headerlink" href="#Freq-versus-Magnitude-plot" title="Permalink to this headline">¶</a></h1>
+<h2>Freq versus Magnitude plot<a class="headerlink" href="#Freq-versus-Magnitude-plot" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [5]:
@@ -289,7 +282,7 @@ wnunibeam =
 </div>
 </div>
 <div class="section" id="Quadrature-peak-picking">
-<h1>Quadrature peak picking<a class="headerlink" href="#Quadrature-peak-picking" title="Permalink to this headline">¶</a></h1>
+<h2>Quadrature peak picking<a class="headerlink" href="#Quadrature-peak-picking" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [6]:
@@ -330,7 +323,7 @@ fn =
 </div>
 </div>
 <div class="section" id="Using-Vibration-Toolbox">
-<h1>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h1>
+<h2>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [7]:
@@ -361,7 +354,7 @@ amplitude = 0.
 </div>
 </div>
 <div class="section" id="Closed-form-solution">
-<h1>Closed form solution<a class="headerlink" href="#Closed-form-solution" title="Permalink to this headline">¶</a></h1>
+<h2>Closed form solution<a class="headerlink" href="#Closed-form-solution" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [8]:
@@ -416,8 +409,8 @@ f2 =
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-certain-frequency-(using-vibration-toolbox)">
-<h1>Beam Deflection at center due to an excitation on the tip with certain frequency (using vibration toolbox)<a class="headerlink" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-certain-frequency-(using-vibration-toolbox)" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)">
+<h2>Beam Deflection at center due to an excitation on the tip with specified frequency (using vibration toolbox)<a class="headerlink" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [19]:
@@ -461,6 +454,7 @@ displacement =
 </pre></div></div>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -470,24 +464,22 @@ displacement =
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">ME 6210 Lab Notes(just for reference)</a></li>
-<li><a class="reference internal" href="#Lab-2">Lab 2</a><ul>
-<li><a class="reference internal" href="#Frequency-Domain-Identification-Techniques">Frequency Domain Identification Techniques</a></li>
+<li><a class="reference internal" href="#">Lab 2: Frequency Domain Identification Techniques</a><ul>
 <li><a class="reference internal" href="#Beam-Properties">Beam Properties</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#Freq-versus-Magnitude-plot">Freq versus Magnitude plot</a></li>
 <li><a class="reference internal" href="#Quadrature-peak-picking">Quadrature peak picking</a></li>
 <li><a class="reference internal" href="#Using-Vibration-Toolbox">Using Vibration Toolbox</a></li>
 <li><a class="reference internal" href="#Closed-form-solution">Closed form solution</a></li>
-<li><a class="reference internal" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-certain-frequency-(using-vibration-toolbox)">Beam Deflection at center due to an excitation on the tip with certain frequency (using vibration toolbox)</a></li>
+<li><a class="reference internal" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)">Beam Deflection at center due to an excitation on the tip with specified frequency (using vibration toolbox)</a></li>
+</ul>
+</li>
 </ul>
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Matlab1.html" title="previous chapter">ME 6210 Lab Notes(just for reference)</a></li>
-      <li>Next: <a href="Matlab3.html" title="next chapter">ME 6210 Lab Notes(just for reference)</a></li>
+      <li>Previous: <a href="Matlab1.html" title="previous chapter">Lab 1: Identification of Damping Using Log Decrement</a></li>
+      <li>Next: <a href="Matlab3.html" title="next chapter">Lab 3: Computation of Rotating Unbalance</a></li>
   </ul></li>
 </ul>
 </div>

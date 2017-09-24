@@ -1,4 +1,4 @@
-Mechanical Vibrations Laboratory Manual
+Data acquisition with the Bobcat
 =======================================
 
     *Department of Mechanical and Materials Engineering Wright State

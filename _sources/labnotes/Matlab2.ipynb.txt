@@ -4,18 +4,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# ME 6210 Lab Notes(just for reference)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "Lab 2\n",
-    "===\n",
-    "\n",
-    "Frequency Domain Identification Techniques\n",
-    "----------------------------------------------------\n"
+    "# Lab 2: Frequency Domain Identification Techniques\n"
    ]
   },
   {
@@ -35,8 +24,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Beam Properties\n",
-    "------------------------------"
+    "## Beam Properties\n"
    ]
   },
   {
@@ -81,8 +69,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Freq versus Magnitude plot\n",
-    "=================="
+    "## Freq versus Magnitude plot\n"
    ]
   },
   {
@@ -109,8 +96,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Quadrature peak picking\n",
-    "========================="
+    "## Quadrature peak picking\n"
    ]
   },
   {
@@ -154,8 +140,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Using Vibration Toolbox\n",
-    "========================="
+    "## Using Vibration Toolbox\n"
    ]
   },
   {
@@ -190,8 +175,7 @@
     "collapsed": true
    },
    "source": [
-    "Closed form solution\n",
-    "======================="
+    "## Closed form solution\n"
    ]
   },
   {
@@ -250,8 +234,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Beam Deflection at center due to an excitation on the tip with certain frequency (using vibration toolbox)\n",
-    "================================================================================"
+    "## Beam Deflection at center due to an excitation on the tip with specified frequency (using vibration toolbox)\n"
    ]
   },
   {
@@ -293,31 +276,27 @@
     "admittance=abs(H(2001));\n",
     "displacement=admittance*F % in meters"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {
-    "collapsed": true
-   },
-   "outputs": [],
-   "source": []
   }
  ],
  "metadata": {
+  "hide_input": false,
   "kernelspec": {
-   "display_name": "MATLAB",
+   "display_name": "Matlab",
    "language": "matlab",
-   "name": "imatlab"
+   "name": "matlab"
   },
   "language_info": {
    "codemirror_mode": "octave",
    "file_extension": ".m",
+   "help_links": [
+    {
+     "text": "MetaKernel Magics",
+     "url": "https://github.com/calysto/metakernel/blob/master/metakernel/magics/README.md"
+    }
+   ],
    "mimetype": "text/x-matlab",
    "name": "matlab",
-   "nbconvert_exporter": "imatlab._exporter.MatlabExporter",
-   "pygments_lexer": "matlab",
-   "version": "9.2.0.556344 (R2017a)"
+   "version": "0.14.3"
   }
  },
  "nbformat": 4,

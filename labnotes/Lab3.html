@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Lab 3 &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
+    <title>Lab 3: Computation of Rotating Unbalance &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ME 6210 Lab Notes(just for reference)" href="Matlab1.html" />
-    <link rel="prev" title="Lab 2" href="Lab2.html" />
+    <link rel="next" title="Mechanical Vibrations Laboratory Manual" href="../bobcat.html" />
+    <link rel="prev" title="Lab 2: Frequency Domain Identification Techniques" href="Lab2.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -203,10 +203,8 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 </style>
-<div class="section" id="Lab-3">
-<h1>Lab 3<a class="headerlink" href="#Lab-3" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="Computation-of-Rotating-Unbalance">
-<h2>Computation of Rotating Unbalance<a class="headerlink" href="#Computation-of-Rotating-Unbalance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Lab-3:-Computation-of-Rotating-Unbalance">
+<h1>Lab 3: Computation of Rotating Unbalance<a class="headerlink" href="#Lab-3:-Computation-of-Rotating-Unbalance" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [72]:
@@ -233,7 +231,6 @@ div.nboutput div.output_area.stderr {
 The autoreload extension is already loaded. To reload it, use:
   %reload_ext autoreload
 </pre></div></div>
-</div>
 </div>
 <div class="section" id="Geometry-and-Material-Properties">
 <h2>Geometry and Material Properties<a class="headerlink" href="#Geometry-and-Material-Properties" title="Permalink to this headline">¶</a></h2>
@@ -341,9 +338,8 @@ The autoreload extension is already loaded. To reload it, use:
 </div>
 <div class="section" id="Experimental-Data-Analysis">
 <h2>Experimental Data Analysis<a class="headerlink" href="#Experimental-Data-Analysis" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="Using-Vibration-Toolbox">
-<h2>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h2>
+<h3>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [77]:
@@ -619,13 +615,7 @@ The autoreload extension is already loaded. To reload it, use:
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">R</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">w2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">w</span><span class="p">)</span>
     <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">w</span><span class="o">**</span><span class="n">N</span><span class="o">*</span><span class="n">R</span>
-<span class="c1">#    c = np.ndarray.flatten(c)</span>
 
-<span class="c1">#    print(w2d.shape)</span>
-<span class="c1">#    input()</span>
-<span class="c1">#    print(w2d[:,np.arange(0,N+1)].shape)</span>
-<span class="c1">#    print(x[:,np.arange(0,N+1)].shape)</span>
-<span class="c1">#    input()</span>
     <span class="n">aa1</span> <span class="o">=</span> <span class="n">w2d</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)]</span> \
               <span class="o">**</span><span class="n">x</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)]</span> \
               <span class="o">*</span><span class="n">y</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)]</span>
@@ -1205,6 +1195,7 @@ The autoreload extension is already loaded. To reload it, use:
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="Beam-Parameters">
 <h2>Beam Parameters<a class="headerlink" href="#Beam-Parameters" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
@@ -1361,12 +1352,13 @@ The autoreload extension is already loaded. To reload it, use:
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Lab 3</a><ul>
-<li><a class="reference internal" href="#Computation-of-Rotating-Unbalance">Computation of Rotating Unbalance</a></li>
+<li><a class="reference internal" href="#">Lab 3: Computation of Rotating Unbalance</a><ul>
 <li><a class="reference internal" href="#Geometry-and-Material-Properties">Geometry and Material Properties</a></li>
 <li><a class="reference internal" href="#Plotting-Experimental-Data">Plotting Experimental Data</a></li>
-<li><a class="reference internal" href="#Experimental-Data-Analysis">Experimental Data Analysis</a></li>
+<li><a class="reference internal" href="#Experimental-Data-Analysis">Experimental Data Analysis</a><ul>
 <li><a class="reference internal" href="#Using-Vibration-Toolbox">Using Vibration Toolbox</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Beam-Parameters">Beam Parameters</a></li>
 <li><a class="reference internal" href="#Close-form-Euler-Bernoulli-solution">Close form Euler-Bernoulli solution</a></li>
 <li><a class="reference internal" href="#Transverse-Displacement-at-beam-center-using-VTB">Transverse Displacement at beam center using VTB</a></li>
@@ -1378,8 +1370,8 @@ The autoreload extension is already loaded. To reload it, use:
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Lab2.html" title="previous chapter">Lab 2</a></li>
-      <li>Next: <a href="Matlab1.html" title="next chapter">ME 6210 Lab Notes(just for reference)</a></li>
+      <li>Previous: <a href="Lab2.html" title="previous chapter">Lab 2: Frequency Domain Identification Techniques</a></li>
+      <li>Next: <a href="../bobcat.html" title="next chapter">Mechanical Vibrations Laboratory Manual</a></li>
   </ul></li>
 </ul>
 </div>
