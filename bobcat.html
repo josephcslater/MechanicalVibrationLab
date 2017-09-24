@@ -1,0 +1,365 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mechanical Vibrations Laboratory Manual &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lab 1" href="labnotes/Lab1.html" />
+    <link rel="prev" title="Mechanical Vibrations Lab Manual" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mechanical-vibrations-laboratory-manual">
+<h1>Mechanical Vibrations Laboratory Manual<a class="headerlink" href="#mechanical-vibrations-laboratory-manual" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><em>Department of Mechanical and Materials Engineering Wright State
+University</em></div></blockquote>
+</div>
+<div class="section" id="equipment-and-software-setup-procedures">
+<h1>Equipment and Software Setup Procedures<a class="headerlink" href="#equipment-and-software-setup-procedures" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>The following provides instructions for the collection of
+acceleration data from the cantilever beams in the vibration lab (RC
+010) upon excitation from an impulse hammer using Bobcat data
+acquisition tools.</div></blockquote>
+<div class="section" id="channels-configuration">
+<h2>Channels Configuration<a class="headerlink" href="#channels-configuration" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Turn on computer</li>
+<li>Power on Bobcat modem (switch on back)</li>
+<li>Launch Bobcat software. The Local and Viewer windows should appear.</li>
+<li>Define channel parameters. On the Local window menu, select:<ol class="loweralpha">
+<li><em>→</em> Setup<ol class="lowerroman">
+<li><em>→</em> Channels. The channel definition window should appear. In
+this window, input the accelerometer serial number and voltage
+sensitivity for channel 2. These values can be found on a card
+inside the accelerometer storage case. Also, set the type for
+channels 3 and 4 to “inactive” as well as the ICP to “on” for
+channels 1 and 2 as shown in figure 1. Afterwards, select
+<strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="_images/image1.jpeg"><img alt="Channels Configuration Window" src="_images/image1.jpeg" style="width: 514.5px; height: 87.75px;" /></a>
+<p class="caption"><span class="caption-text">Figure 1: Channels Configuration Window</span></p>
+</div>
+<ol class="arabic simple">
+<li>Connect the hammer and accelerometer to the Bobcat modem on channels
+1 and 2, respectively.</li>
+<li>Using wax, affix the accelerometer to the beam at the location where
+a response will be measured. Tape the wire about an inch behind the
+sensor to the beam.</li>
+</ol>
+</div>
+<div class="section" id="set-response-viewing-parameters">
+<h2>Set Response Viewing Parameters<a class="headerlink" href="#set-response-viewing-parameters" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Set the plotting parameters for the hammer and accelerometer
+responses. On the Viewer window menu, select:<ol class="loweralpha">
+<li><em>→</em> View<ol class="lowerroman">
+<li>Deselect view ports excluding the following:<ol class="upperalpha">
+<li>Plot toolbar</li>
+<li>Plot definition</li>
+<li>Page Settings</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Locate and click the icon shown in figure 2. The set number of
+rows and columns window should appear. In this window, change the
+following parameters as indicated. Afterwards, select <strong>OK</strong>.</li>
+</ol>
+</li>
+</ol>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="_images/image2.png"><img alt="Viewer Plots Icon" src="_images/image2.png" style="width: 29.0px; height: 34.0px;" /></a>
+<p class="caption"><span class="caption-text">Figure 2: Viewer Plots Icon</span></p>
+</div>
+<ol class="lowerroman simple">
+<li>Rows <em>›→</em> 2</li>
+<li>Columns <em>›→</em> 1</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Select the top plot and click the plot reduction icon shown in figure
+3 until only “A” remains above the plotting region. Right Click on
+“A” and change the plot color to black. With the top plot still
+active, set the following parameters as indicated.</li>
+</ol>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="_images/image3.jpeg"><img alt="Viewer Plots Icon" src="_images/image3.jpeg" style="width: 31.0px; height: 30.0px;" /></a>
+<p class="caption"><span class="caption-text">Figure 3: Viewer Plots Icon</span></p>
+</div>
+<ol class="lowerroman simple">
+<li>Under “Channel” tab <em>›→</em> Ch1</li>
+<li>Under “Ref Channel” tab <em>›→</em> Off</li>
+<li>Drop down menu to the upper right of the “Ref Channel” tab <em>›→</em>
+time trace</li>
+<li>Drop down menu to the lower right of the “Ref Channel” tab <em>›→</em>
+volts</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Select the bottom plot and set the following parameters as indicated.<ol class="lowerroman">
+<li>Under “Channel” tab <em>›→</em> Ch2</li>
+<li>Under “Ref Channel” tab <em>›→</em> Off</li>
+<li>Drop down menu to the right of the “Ref Channel” tab <em>›→</em> time
+trace</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="equipment-test">
+<h2>Equipment Test<a class="headerlink" href="#equipment-test" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Set acquisition parameters for equipment test. On the Local window
+menu, select:<ol class="loweralpha">
+<li><em>→</em> Setup<ol class="lowerroman">
+<li><em>→</em> Acquisition. The acquisition window should appear. In this
+window, change the following acquisition values as shown in
+figure 4. Afterwards, select <strong>OK</strong>.<ol class="upperalpha">
+<li>Type <em>›→</em> Analysis</li>
+<li>Resolution <em>›→</em> 1600</li>
+<li>Bandwidth <em>›→</em> 500</li>
+<li>Window Type <em>›→</em> None</li>
+<li>Num Avgs <em>›→</em> 1</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="_images/image4.jpeg"><img alt="Acquisition Window" src="_images/image4.jpeg" style="width: 291.0px; height: 572.0px;" /></a>
+<p class="caption"><span class="caption-text">Figure 4: Acquisition Window</span></p>
+</div>
+<ol class="arabic simple">
+<li>Set control parameters for data storage. On the Local window menu,
+select:<ol class="loweralpha">
+<li><em>→</em> Setup<ol class="lowerroman">
+<li><em>→</em> Controls. The controls window should appear. In this
+window, change the following parameters as indicated.
+Afterwards, select <strong>OK</strong>.<ol class="upperalpha">
+<li>Data Type <em>›→</em> Puma</li>
+<li>File Name <em>›→</em> Query</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Open and dock Analyzer control. On the Local window menu, select:<ol class="loweralpha">
+<li><em>→</em> View<ol class="lowerroman">
+<li><em>→</em> Analyzer control. The analyzer control window should
+appear. Grab this window and dock it to the Local window.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Test the hammer and accelerometer. On the Analyzer control, select:<ol class="loweralpha">
+<li><em>→</em> Trigger tab. On this tab, change the following parameters as
+indicated. Afterwards, select <strong>Apply</strong>.<ol class="lowerroman">
+<li>Source <em>›→</em> Free Run</li>
+</ol>
+</li>
+<li><em>→</em> Control tab. On this tab, take the following actions as
+instructed to test the hammer.<ol class="lowerroman">
+<li>Be prepared to strike the <em>table</em> with the hammer.</li>
+<li>Click the “Start” button.</li>
+<li>Gently strike the table a few times within the hammer in the
+same manor intended to excite the beam for data collection.</li>
+<li>Inspect the hammer response (top) plot in the viewer window.
+Spikes should occur at the time points which the table was
+struck. Document the amplitude at these voltage peaks. If
+spikes do not appear, consult the TA.</li>
+</ol>
+</li>
+<li><em>→</em> Control tab. On this tab, take the following actions as
+instructed to test the accelerom- eter.<ol class="lowerroman">
+<li>Be prepared to tap the beam with your finger.</li>
+<li>Click the “Start” button.</li>
+<li>Gently tap the beam a few times with your finger.</li>
+<li>Inspect the accelerometer response (bottom) plot in the
+viewer window. oscillations should occur at the time points
+which the beam was tapped. If oscillations do not appear,
+consult the TA.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="data-collection">
+<h2>Data Collection<a class="headerlink" href="#data-collection" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Set acquisition parameters for data collection. On the Local window
+menu, select:<ol class="loweralpha">
+<li><em>→</em> Setup<ol class="lowerroman">
+<li><em>→</em> Acquisition. A pop up window should appear. In this window,
+change the following parameters as indicated. Afterwards,
+select <strong>OK</strong>.<ol class="upperalpha">
+<li>Num Avgs <em>›→</em> 5</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Set analyzer control parameters. On the Analyzer control, select:<ol class="loweralpha">
+<li><em>→</em> Trigger tab. On this tab, change the following parameters as
+indicated. Afterwards, select <strong>Apply</strong>.<ol class="lowerroman">
+<li>Source <em>›→</em> Ch1</li>
+<li>Theshold <em>›→</em> amount determined in equipment test</li>
+<li>Slope <em>›→</em> rising</li>
+<li>Arming Mode <em>›→</em> Manual</li>
+<li>Manual Accept <em>›→</em> Checked</li>
+</ol>
+</li>
+<li><em>→</em> Control tab. On this tab, perform the following parameters
+tasks as indicated to collect data for each case required.<ol class="lowerroman">
+<li>Select “Open Data File” at the bottom of the Analyzer control
+window. Create a file with a meaningful name (eg: “Case 1”)
+and save it to the desktop</li>
+<li>Click the “Start” button and repeat the following
+instructions for all five impulses to generate the average
+response for the current case.<ol class="upperalpha">
+<li>Click the “Manual Arm” button</li>
+<li>Gently strike the beam with the hammer.</li>
+<li>Inspect the hammer response plot. A single impulse peak
+should appear. Multiple peaks indicate double hits.</li>
+<li>Click “accept” if the hammer response exhibits a single
+peak, otherwise, click reject and return to step A.</li>
+<li>Use your hand to dampen residual vibrations from previous
+hits between each measurement.</li>
+</ol>
+</li>
+<li>Once all measurements for a case have been conducted, click
+“Stop”.</li>
+<li>Click “Store”.</li>
+<li>Select “Close Data File” at the bottom of the Analyzer
+control window.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="convert-data">
+<h2>Convert Data<a class="headerlink" href="#convert-data" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Once all data has been collect, each file must be converted to a
+Matlab loadable file format. On windows start menu, select:<ol class="loweralpha">
+<li><em>→</em> Puma Export Manager. For each data file, perform the following
+tasks.<ol class="lowerroman">
+<li>Locate data file path in the left window.</li>
+<li>Set the output file type as MAT (SDD <em>→</em> MAT).</li>
+<li>Identify the output path in the right window.</li>
+<li>Execute the file conversion by clicking the arrow between
+input</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mechanical Vibrations Laboratory Manual</a></li>
+<li><a class="reference internal" href="#equipment-and-software-setup-procedures">Equipment and Software Setup Procedures</a><ul>
+<li><a class="reference internal" href="#channels-configuration">Channels Configuration</a></li>
+<li><a class="reference internal" href="#set-response-viewing-parameters">Set Response Viewing Parameters</a></li>
+<li><a class="reference internal" href="#equipment-test">Equipment Test</a></li>
+<li><a class="reference internal" href="#data-collection">Data Collection</a></li>
+<li><a class="reference internal" href="#convert-data">Convert Data</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Mechanical Vibrations Lab Manual</a></li>
+      <li>Next: <a href="labnotes/Lab1.html" title="next chapter">Lab 1</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bobcat.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Joseph C. Slater.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/bobcat.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
