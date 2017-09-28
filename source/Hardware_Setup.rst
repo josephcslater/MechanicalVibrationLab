@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 =======================================
-Hardware Setup
+National Instrument System setup
 =======================================
 Currently, only National Instruments hardware is supported within OpenModal. Before setting up the NIMax software interface, it is important to connect the Hardware right. The following procedure explains it:
 
