@@ -1,0 +1,742 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Lab 2: Frequency Domain Identification Techniques &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     'Alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab 3: Computation of Rotating Unbalance" href="Lab3.html" />
+    <link rel="prev" title="Lab 1: Identification of Damping Using Log Decrement" href="Lab1.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput div.prompt,
+div.nbinput div.input_area,
+div.nbinput div[class*=highlight],
+div.nbinput div[class*=highlight] pre,
+div.nboutput,
+div.nbinput div.prompt,
+div.nbinput div.output_area,
+div.nboutput div[class*=highlight],
+div.nboutput div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput,
+    div.nboutput {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput div.prompt pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput div.prompt pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput div.prompt,
+div.nboutput div.prompt {
+    min-width: 8ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput div.prompt,
+    div.nboutput div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput div.prompt pre,
+div.nboutput div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput div.input_area,
+div.nboutput div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput div.input_area,
+    div.nboutput div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput div.input_area {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="section" id="Lab-2:-Frequency-Domain-Identification-Techniques">
+<h1>Lab 2: Frequency Domain Identification Techniques<a class="headerlink" href="#Lab-2:-Frequency-Domain-Identification-Techniques" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="kn">import</span> <span class="nn">vibration_toolbox</span> <span class="kn">as</span> <span class="nn">vtb</span>
+<span class="kn">from</span> <span class="nn">vibration_toolbox</span> <span class="kn">import</span> <span class="n">sdof_cf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span> <span class="kn">as</span> <span class="nn">sio</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="kn">as</span> <span class="nn">la</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div></div>
+</div>
+<div class="section" id="Beam-Properties">
+<h2>Beam Properties<a class="headerlink" href="#Beam-Properties" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">l</span><span class="o">=</span><span class="mf">21.75</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># length in meters</span>
+<span class="n">h</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># height in meters</span>
+<span class="n">w</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># width in meters</span>
+<span class="n">A</span><span class="o">=</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">;</span>
+<span class="n">rho</span><span class="o">=</span><span class="mi">2700</span><span class="p">;</span><span class="c1"># density in kg/cubicmeter</span>
+<span class="n">E</span><span class="o">=</span><span class="mf">7.31e10</span><span class="p">;</span><span class="c1"># youngs modulus in Pa</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># moment of inertia (m^4)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="n">l</span><span class="o">**</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># stiffness (N/m)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">l</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">;</span><span class="c1"># volume (m^3)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">V</span><span class="p">;</span><span class="c1"># mass (kg)</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">m</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># analytical natural frequency of massless beam with concentrated mass in Hz</span>
+<span class="n">wnunibeam</span><span class="o">=</span><span class="p">((</span><span class="mf">1.875</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># natural freqency of a uniform section beam in Hz</span>
+<span class="c1">#c_cr = 2*sqrt(k*m); # critical damping coefficient</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">wn</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[62]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>17.229977388638673
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">wnunibeam</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[63]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>34.972495605920052
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Freq-versus-Magnitude-plot">
+<h2>Freq versus Magnitude plot<a class="headerlink" href="#Freq-versus-Magnitude-plot" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="c1"># Mag vs Freq</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">mat_contents</span><span class="o">=</span><span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;Case2-2.mat&#39;</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Freq_domain&#39;</span><span class="p">]</span>
+<span class="n">Hf_chan_2</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Hf_chan_2&#39;</span><span class="p">]</span>
+<span class="n">H</span><span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Hf_chan_2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$Freq,Hz$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$H,dB$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$Magn$ versus $Freq$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Lab2_7_0.png" src="../_images/labnotes_Lab2_7_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Quadrature-peak-picking">
+<h2>Quadrature peak picking<a class="headerlink" href="#Quadrature-peak-picking" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">hpeak</span><span class="o">=</span><span class="mf">85.23</span><span class="p">;</span><span class="c1"># obtained from plot</span>
+<span class="n">fd</span><span class="o">=</span><span class="mf">34.06</span> <span class="c1">#obtained from plot</span>
+<span class="n">thredb</span><span class="o">=</span><span class="p">(</span><span class="n">hpeak</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">fda</span><span class="o">=</span><span class="mf">33.65</span><span class="p">;</span><span class="c1">#obtained from plot</span>
+<span class="n">fdb</span><span class="o">=</span><span class="mf">34.35</span><span class="p">;</span><span class="c1">#obtained from plot</span>
+<span class="n">zeta</span><span class="o">=</span><span class="p">(</span><span class="n">fdb</span><span class="o">-</span><span class="n">fda</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">fd</span><span class="p">)</span>
+<span class="n">fn</span><span class="o">=</span><span class="n">fd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">zeta</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># in hertz</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">fd</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[66]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>34.06
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">zeta</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[67]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>0.010275983558426348
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [68]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">fn</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[68]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>34.061798439554778
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Using-Vibration-Toolbox">
+<h2>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span>    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="n">mat_contents</span><span class="o">=</span><span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;Case2-2.mat&#39;</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Freq_domain&#39;</span><span class="p">]</span>
+    <span class="n">TF</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Hf_chan_2&#39;</span><span class="p">]</span>
+    <span class="n">Fmin</span><span class="o">=</span><span class="mi">70</span>
+    <span class="n">Fmax</span><span class="o">=</span><span class="mi">125</span>
+    <span class="n">sdof_cf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Fmin</span><span class="p">,</span> <span class="n">Fmax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Lab2_14_0.png" src="../_images/labnotes_Lab2_14_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[69]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>(0.00038369496272758913, 34.042986534079276, 16.813265077508397)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Closed-form-solution">
+<h2>Closed form solution<a class="headerlink" href="#Closed-form-solution" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [70]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Beta1</span><span class="o">=</span> <span class="mf">1.87510407</span><span class="o">/</span><span class="n">l</span>
+<span class="n">Beta2</span><span class="o">=</span> <span class="mf">4.69409133</span><span class="o">/</span><span class="n">l</span>
+
+<span class="n">w1</span><span class="o">=</span><span class="n">Beta1</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">A</span><span class="p">))</span>
+<span class="n">f1</span><span class="o">=</span><span class="p">((</span><span class="n">Beta1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">A</span><span class="p">))</span>
+<span class="n">w2</span><span class="o">=</span><span class="n">Beta2</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">A</span><span class="p">))</span>
+<span class="n">f2</span><span class="o">=</span><span class="p">((</span><span class="n">Beta2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [71]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Beta1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[71]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>3.3941606842248166
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [72]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Beta2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[72]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>8.496861851751289
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [73]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">w1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[73]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>219.76306397380711
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [74]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">f1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[74]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>34.976377940451826
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [75]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">w2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[75]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>1377.23172666088
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [76]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">f2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[76]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>219.19323708106515
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)">
+<h2>Beam Deflection at center due to an excitation on the tip with specified frequency (using vibration toolbox)<a class="headerlink" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [123]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">vtb</span><span class="o">.</span><span class="n">euler_beam_frf</span><span class="p">(</span><span class="n">xin</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">xout</span><span class="o">=</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">zeta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                   <span class="n">bctype</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">npoints</span><span class="o">=</span><span class="mi">2001</span><span class="p">,</span>
+                   <span class="n">beamparams</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span>
+<span class="n">rho</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">l</span><span class="p">]))</span>
+<span class="n">H</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Lab2_24_0.png" src="../_images/labnotes_Lab2_24_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[123]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>array([[  9.88625990e-09 +0.00000000e+00j,
+         -5.64674260e-10 +0.00000000e+00j],
+       [  9.88627989e-09 -2.81186199e-13j,
+         -5.64674289e-10 +2.58064503e-15j],
+       [  9.88633984e-09 -5.62379221e-13j,
+         -5.64674377e-10 +5.16129167e-15j],
+       ...,
+       [ -1.39759565e-09 -1.12283203e-11j,
+         -7.13278438e-10 +8.22817856e-12j],
+       [ -1.39600041e-09 -1.12083085e-11j,
+         -7.13466410e-10 +8.23663796e-12j],
+       [ -1.39440801e-09 -1.11883460e-11j,
+         -7.13654574e-10 +8.24510731e-12j]])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [117]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fout</span><span class="o">==</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[117]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>array([ -1.39440801e-09 -1.11883460e-11j,  -7.13654574e-10 +8.24510731e-12j])
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [127]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">admittance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="mi">2000</span><span class="p">])</span>
+<span class="n">excitationforce</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">displacement</span> <span class="o">=</span> <span class="n">admittance</span><span class="o">*</span><span class="n">excitationforce</span>
+<span class="n">displacement</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[127]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>array([  1.39445290e-07,   7.13702202e-08])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Lab 2: Frequency Domain Identification Techniques</a><ul>
+<li><a class="reference internal" href="#Beam-Properties">Beam Properties</a></li>
+<li><a class="reference internal" href="#Freq-versus-Magnitude-plot">Freq versus Magnitude plot</a></li>
+<li><a class="reference internal" href="#Quadrature-peak-picking">Quadrature peak picking</a></li>
+<li><a class="reference internal" href="#Using-Vibration-Toolbox">Using Vibration Toolbox</a></li>
+<li><a class="reference internal" href="#Closed-form-solution">Closed form solution</a></li>
+<li><a class="reference internal" href="#Beam-Deflection-at-center-due-to-an-excitation-on-the-tip-with-specified-frequency-(using-vibration-toolbox)">Beam Deflection at center due to an excitation on the tip with specified frequency (using vibration toolbox)</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Lab1.html" title="previous chapter">Lab 1: Identification of Damping Using Log Decrement</a></li>
+      <li>Next: <a href="Lab3.html" title="next chapter">Lab 3: Computation of Rotating Unbalance</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/labnotes/Lab2.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Joseph C. Slater.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/labnotes/Lab2.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

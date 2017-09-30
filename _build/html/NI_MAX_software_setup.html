@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>NI MAX software setup &#8212; Wright State University Mechanical Vibration Lab Alpha documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Alpha',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenModal Software Manual" href="OpenModal_Software_Manual_and_Help.html" />
+    <link rel="prev" title="National Instrument System setup" href="Hardware_Setup.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ni-max-software-setup">
+<h1>NI MAX software setup<a class="headerlink" href="#ni-max-software-setup" title="Permalink to this headline">¶</a></h1>
+<p>NI MAX software acts as an interface between Hardware Setup and OM software. Here is where we set acquisition parameters for equipment test. Following are the instructions:</p>
+<ul class="simple">
+<li>Double click on NIMAX icon on Desktop or do it from start menu. Following window appears.</li>
+</ul>
+<img alt="_images/NIMAX(1).svg" src="_images/NIMAX(1).svg" /><ul class="simple">
+<li>Double click on Data Neighborhood in the window to the left shows NI-DAQms Tasks—&gt; Create a new task with the mouse right click—&gt; Add Acquire Signals, then Analog Input—&gt; Choose Voltage—&gt; under Supported Physical Channels use Ctrl or Shift to select the Hammer and the Accelerometer connected to NI Board (in the case of figure below, it was ai3 and ai7).</li>
+</ul>
+<img alt="_images/NIMAX2.svg" src="_images/NIMAX2.svg" /><img alt="_images/NIMAX3.svg" src="_images/NIMAX3.svg" /><ul class="simple">
+<li>Now, its time to set acquisition parameters for both the sensors and test them. Once MyVoltageTask window opens—&gt; go to configuration—&gt; Voltage_0(Accelerometer)</li>
+</ul>
+<ol class="arabic simple">
+<li>Signal Input Range—&gt; Max: 10, Min: -10, Units: Volts</li>
+<li>Terminal Configuration—&gt; Differential</li>
+<li>Custom Scaling—&gt; No Scale</li>
+<li>Acquisition Mode—&gt; Continuous Samples</li>
+<li>Samples to Read—&gt; 800</li>
+<li>Rate(Hz)—&gt; 2000</li>
+<li>Leave other options to default</li>
+<li>Click on Save, to save this configuration</li>
+</ol>
+<img alt="_images/NIMAX4.svg" src="_images/NIMAX4.svg" /><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Similar configuration may be used for Voltage_1(Hammer).</p>
+</div>
+<ul class="simple">
+<li>Then, to test the Hammer—&gt; Click on Run—&gt; Gently strike the table with the hammer, spike should occur in the graph as shown in the following figure</li>
+</ul>
+<img alt="_images/NIMAX5.svg" src="_images/NIMAX5.svg" /><ul class="simple">
+<li>Similarly, to test the Accelerometer—&gt; Click on Run—&gt; Gently tap the beam with your finger—&gt; Inspect the Accelerometer response in the plot window, oscillations should occur at the time points as shown in figure below:</li>
+</ul>
+<img alt="_images/NIMAX6.svg" src="_images/NIMAX6.svg" /><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is important to save the configuration as you change them.</p>
+</div>
+<p><code class="docutils literal"><span class="pre">That</span> <span class="pre">ends</span> <span class="pre">NIMAX</span> <span class="pre">software</span> <span class="pre">Setup</span></code></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Hardware_Setup.html" title="previous chapter">National Instrument System setup</a></li>
+      <li>Next: <a href="OpenModal_Software_Manual_and_Help.html" title="next chapter">OpenModal Software Manual</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/NI_MAX_software_setup.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Joseph C. Slater.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/NI_MAX_software_setup.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
