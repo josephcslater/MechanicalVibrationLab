@@ -205,7 +205,7 @@ div.nboutput div.output_area.stderr {
 </style>
 <div class="section" id="Lab-1:-Identification-of-Damping-Using-Log-Decrement">
 <h1>Lab 1: Identification of Damping Using Log Decrement<a class="headerlink" href="#Lab-1:-Identification-of-Damping-Using-Log-Decrement" title="Permalink to this headline">¶</a></h1>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [1]:
 </pre></div>
@@ -214,6 +214,7 @@ div.nboutput div.output_area.stderr {
 <span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
 <span class="kn">import</span> <span class="nn">vibration_toolbox</span> <span class="kn">as</span> <span class="nn">vtb</span>
+<span class="kn">from</span> <span class="nn">vibration_toolbox</span> <span class="kn">import</span> <span class="n">time_plot</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span> <span class="kn">as</span> <span class="nn">sio</span>
@@ -221,11 +222,84 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 </div>
-<div class="section" id="Plotting-Experimental-Data">
-<h2>Plotting Experimental Data<a class="headerlink" href="#Plotting-Experimental-Data" title="Permalink to this headline">¶</a></h2>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Interactive iPython tools will not work without IPython.display           and ipywidgets installed.
+Interactive iPython tools will not work without IPython.display           and ipywidgets installed.
+</pre></div></div>
+</div>
+<div class="section" id="Beam-Properties">
+<h2>Beam Properties<a class="headerlink" href="#Beam-Properties" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">l</span><span class="o">=</span><span class="mf">21.75</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># length in meters</span>
+<span class="n">h</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># height in meters</span>
+<span class="n">w</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="mf">0.0254</span><span class="p">;</span><span class="c1"># width in meters</span>
+<span class="n">rho</span><span class="o">=</span><span class="mi">2700</span><span class="p">;</span><span class="c1"># density in kg/cubicmeter</span>
+<span class="n">E</span><span class="o">=</span><span class="mf">7.31e10</span><span class="p">;</span><span class="c1"># youngs modulus in Pa</span>
+<span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># moment of inertia (m^4)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="n">l</span><span class="o">**</span><span class="mi">3</span><span class="p">;</span> <span class="c1"># stiffness (N/m)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">l</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">h</span><span class="p">;</span><span class="c1"># volume (m^3)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">V</span><span class="p">;</span><span class="c1"># mass (kg)</span>
+<span class="n">wn</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="c1"># analytical natural frequency of massless beam with concentrated mass</span>
+<span class="n">wn2</span><span class="o">=</span><span class="p">(</span><span class="mf">1.875</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span> <span class="c1">#natural freqency of a uniform section beam</span>
+<span class="c1">#c_cr = 2*math.sqrt(k*m); # critical damping coefficient</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">wn</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[3]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>108.259140771331
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">wn2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[4]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>219.7386705465195
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Acceleration-vs-Time-plot">
+<h2>Acceleration vs Time plot<a class="headerlink" href="#Acceleration-vs-Time-plot" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
@@ -233,17 +307,28 @@ div.nboutput div.output_area.stderr {
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="n">mat_contents</span><span class="o">=</span><span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;Case1-2.mat&#39;</span><span class="p">)</span>
-<span class="n">Time</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_domain&#39;</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_chan_2&#39;</span><span class="p">]</span>
+<span class="n">Time_domain</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_domain&#39;</span><span class="p">]</span>
+<span class="n">Time_chan_2</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_chan_2&#39;</span><span class="p">]</span>
+<span class="n">Time_chan_2</span> <span class="o">=</span> <span class="n">Time_chan_2</span><span class="o">*</span><span class="p">(</span><span class="mf">9.81</span><span class="p">);</span>
+<span class="n">mean</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">Time_chan_2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">Time_chan_2</span><span class="p">);</span>
+<span class="n">Accel</span> <span class="o">=</span> <span class="n">Time_chan_2</span><span class="o">-</span><span class="n">mean</span><span class="p">;</span>
 <span class="c1"># The acceleration values from Bobcat will be in Gs. So,  to convert them to m/s^2,</span>
 <span class="c1"># we will have to multiply the vector by 9.81</span>
-<span class="n">Acc</span><span class="o">=</span><span class="n">b</span><span class="o">*</span><span class="mf">9.81</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Time</span><span class="p">,</span><span class="n">Acc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Time_domain</span><span class="p">,</span> <span class="n">Accel</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$Acc(m/s^2)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$Time(sec)$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$Acc$ versus $Time$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[5]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.text.Text at 0x7f719edf9438&gt;
 </pre></div>
 </div>
 </div>
@@ -251,28 +336,133 @@ div.nboutput div.output_area.stderr {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/labnotes_Lab1_3_0.png" src="../_images/labnotes_Lab1_3_0.png" />
+<img alt="../_images/labnotes_Lab1_7_1.png" src="../_images/labnotes_Lab1_7_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="Experimental-Data-Analysis">
-<h2>Experimental Data Analysis<a class="headerlink" href="#Experimental-Data-Analysis" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="Analytical">
-<h3>Analytical<a class="headerlink" href="#Analytical" title="Permalink to this headline">¶</a></h3>
+<p>Data Analysis ——————–</p>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="c1"># Enter values from plots for calculations. Use data cursor to</span>
+<span class="c1"># obtain x and t values.</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mf">81.45</span><span class="p">;</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="mf">0.007031</span><span class="p">;</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="mf">15.44</span><span class="p">;</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="mf">3.181</span><span class="p">;</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">106</span><span class="p">;</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">;</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Log-Decrement-Method">
+<h2>Log Decrement Method<a class="headerlink" href="#Log-Decrement-Method" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x1</span><span class="o">/</span><span class="n">x2</span><span class="p">)</span> <span class="c1"># delta</span>
+<span class="n">d</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[7]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>0.015688941419353057
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">z</span><span class="o">=</span> <span class="n">d</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># zeta</span>
+<span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>0.0024969647946533331
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">Td</span> <span class="o">=</span> <span class="p">(</span><span class="n">time</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="c1">#damped time period</span>
+<span class="n">Td</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>0.029943103773584907
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">wd</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">Td</span> <span class="c1">#damped natural frequency</span>
+<span class="n">wd</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[10]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>209.83747559003763
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">E</span><span class="o">=</span><span class="mf">7.31e10</span> <span class="c1">#young&#39;s Modulus</span>
-<span class="n">b1</span><span class="o">=</span><span class="mf">0.0254</span> <span class="c1">#width</span>
-<span class="n">h</span><span class="o">=</span><span class="mf">0.0127</span> <span class="c1">#height</span>
-<span class="n">l</span><span class="o">=</span><span class="mf">0.5524</span> <span class="c1">#length</span>
-<span class="n">r</span><span class="o">=</span><span class="mf">2.7</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#Density</span>
-<span class="n">v</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">b1</span><span class="o">*</span><span class="n">h</span> <span class="c1">#volume</span>
-<span class="n">I</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">*</span><span class="n">b1</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#Area moment of inertia</span>
-
+<span></span><span class="n">wne</span> <span class="o">=</span> <span class="n">wd</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># natural frequency in rad/sec</span>
+<span class="n">wne</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[11]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>209.83812974392472
 </pre></div>
 </div>
 </div>
@@ -282,8 +472,8 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">l</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="c1">#stiffness</span>
-<span class="n">k</span>
+<span></span><span class="n">k2</span><span class="o">=</span><span class="p">(</span><span class="n">wne</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">m</span> <span class="c1"># one way to use experimental zeta and nat freq to calculate C</span>
+<span class="n">k2</span>
 </pre></div>
 </div>
 </div>
@@ -293,28 +483,18 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="output_area highlight-none"><div class="highlight"><pre>
-<span></span>5640.807192069722
+<span></span>21186.684200875719
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
 <span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">m</span><span class="o">=</span><span class="n">r</span><span class="o">*</span><span class="n">v</span> <span class="c1">#mass</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>Out[13]:
-</pre></div>
-</div>
-<div class="output_area highlight-none"><div class="highlight"><pre>
-<span></span>0.48112161839999995
+<span></span><span class="n">c_cr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="c1"># critical</span>
+
 </pre></div>
 </div>
 </div>
@@ -324,8 +504,8 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">wn</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">m</span><span class="p">)</span>
-<span class="n">wn</span>
+<span></span><span class="n">c</span><span class="o">=</span><span class="n">c_cr</span><span class="o">*</span><span class="n">z</span> <span class="c1"># damping constant</span>
+<span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -335,7 +515,7 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="output_area highlight-none"><div class="highlight"><pre>
-<span></span>108.27873962003879
+<span></span>0.50422108345689065
 </pre></div>
 </div>
 </div>
@@ -345,9 +525,8 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">ccr</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
-<span class="n">c</span><span class="o">=</span><span class="n">ccr</span><span class="o">*</span><span class="n">zeta</span>
-<span class="n">c</span>
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">Accel</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/-</span><span class="p">(</span><span class="n">wd</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -357,20 +536,64 @@ div.nboutput div.output_area.stderr {
 </pre></div>
 </div>
 <div class="output_area highlight-none"><div class="highlight"><pre>
-<span></span>0.03753025646392209
+<span></span>array([ 0.00126369], dtype=float32)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="Estimated-Displacement-vs-Time-using-Vibration-Toolbox">
-<h3>Estimated Displacement vs Time using Vibration Toolbox<a class="headerlink" href="#Estimated-Displacement-vs-Time-using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Using-Vibration-toolbox-for-comparison">
+<h2>Using Vibration toolbox for comparison<a class="headerlink" href="#Using-Vibration-toolbox-for-comparison" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [16]:
+<span></span>In [30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
-<span></span><span class="n">vtb</span><span class="o">.</span><span class="n">time_plot</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">r</span><span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">c</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">l</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="n">Time</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">Acc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">max_time</span><span class="o">=</span><span class="mf">3.5</span><span class="p">)</span>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">mat_contents</span><span class="o">=</span><span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;Case1-2.mat&#39;</span><span class="p">)</span>
+<span class="n">Time_domain</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_domain&#39;</span><span class="p">]</span>
+<span class="n">Time_chan_2</span> <span class="o">=</span> <span class="n">mat_contents</span><span class="p">[</span><span class="s1">&#39;Time_chan_2&#39;</span><span class="p">]</span>
+<span class="n">Time_chan_2</span> <span class="o">=</span> <span class="n">Time_chan_2</span><span class="o">*</span><span class="p">(</span><span class="mf">9.81</span><span class="p">);</span>
+<span class="n">mean</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">Time_chan_2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">Time_chan_2</span><span class="p">);</span>
+<span class="n">Accel</span> <span class="o">=</span> <span class="n">Time_chan_2</span><span class="o">-</span><span class="n">mean</span><span class="p">;</span>
+<span class="n">ax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">Accel</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/-</span><span class="p">(</span><span class="n">wd</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="c1"># max amplitude</span>
+<span class="n">initialvel</span><span class="o">=-</span><span class="n">ax</span><span class="o">*</span><span class="n">wne</span><span class="p">;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">vtb</span><span class="o">.</span><span class="n">time_plot</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">rho</span><span class="o">*</span><span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c_cr</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="n">wne</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.00126369</span><span class="p">,</span> <span class="n">v0</span><span class="o">=-</span><span class="n">ax</span><span class="o">*</span><span class="n">wne</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mf">3.2</span><span class="p">)</span>
+<span class="c1">#ax=fig.add_subplot(111)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Time_domain</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="c1">#grid minor</span>
+<span class="c1">#plt.title(&#39;Case 2: position vs time&#39;)</span>
+<span class="c1">#plt.xlabel(&#39;t(s)&#39;)</span>
+<span class="c1">#plt.ylabel(&#39;Position (m)&#39;)</span>
+<span class="c1">#plt.legend(&#39;Estimated Displacement&#39;,&#39;Experimental Displacement&#39;)</span>
+<span class="c1">#x[0]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>&lt;matplotlib.figure.Figure at 0x7f719ece0320&gt;
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Lab1_21_1.png" src="../_images/labnotes_Lab1_21_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[30]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>[&lt;matplotlib.lines.Line2D at 0x7f719ea01438&gt;]
 </pre></div>
 </div>
 </div>
@@ -378,15 +601,86 @@ div.nboutput div.output_area.stderr {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/labnotes_Lab1_12_0.png" src="../_images/labnotes_Lab1_12_0.png" />
+<img alt="../_images/labnotes_Lab1_21_3.png" src="../_images/labnotes_Lab1_21_3.png" />
 </div>
 </div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [25]:
+</pre></div>
 </div>
-<div class="section" id="Mode-Shapes-for-Cantilever-Beam:-(from-table-6.6-in-the-text)">
-<h3>Mode Shapes for Cantilever Beam: (from table 6.6 in the text)<a class="headerlink" href="#Mode-Shapes-for-Cantilever-Beam:-(from-table-6.6-in-the-text)" title="Permalink to this headline">¶</a></h3>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">zeta</span><span class="p">,</span><span class="n">omega</span><span class="p">,</span><span class="n">omega_d</span><span class="p">,</span><span class="n">A</span><span class="p">]</span><span class="o">=</span><span class="n">vtb</span><span class="o">.</span><span class="n">free_response</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="n">rho</span><span class="o">*</span><span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c_cr</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">(</span><span class="n">wne</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.00126369</span><span class="p">,</span> <span class="n">v0</span><span class="o">=-</span><span class="n">ax</span><span class="o">*</span><span class="n">wne</span><span class="p">,</span> <span class="n">max_time</span><span class="o">=</span><span class="mf">3.2</span><span class="p">);</span>
+
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [17]:
+<span></span>In [26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">zeta</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[26]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>0.0024969647946533327
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">omega</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[27]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>209.83812974392472
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">omega_d</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>Out[28]:
+</pre></div>
+</div>
+<div class="output_area highlight-none"><div class="highlight"><pre>
+<span></span>209.83747559003763
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="3-Mode-shapes">
+<h2>3 Mode shapes<a class="headerlink" href="#3-Mode-shapes" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none"><div class="highlight"><pre>
+<span></span>In [29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3"><div class="highlight"><pre>
@@ -402,7 +696,7 @@ div.nboutput div.output_area.stderr {
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$X$&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$X$ versus $x$&#39;</span><span class="p">)</span>
-<span class="c1">#plt.show()</span>
+
 </pre></div>
 </div>
 </div>
@@ -410,8 +704,7 @@ div.nboutput div.output_area.stderr {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/labnotes_Lab1_14_0.png" src="../_images/labnotes_Lab1_14_0.png" />
-</div>
+<img alt="../_images/labnotes_Lab1_27_0.png" src="../_images/labnotes_Lab1_27_0.png" />
 </div>
 </div>
 </div>
@@ -426,13 +719,11 @@ div.nboutput div.output_area.stderr {
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Lab 1: Identification of Damping Using Log Decrement</a><ul>
-<li><a class="reference internal" href="#Plotting-Experimental-Data">Plotting Experimental Data</a></li>
-<li><a class="reference internal" href="#Experimental-Data-Analysis">Experimental Data Analysis</a><ul>
-<li><a class="reference internal" href="#Analytical">Analytical</a></li>
-<li><a class="reference internal" href="#Estimated-Displacement-vs-Time-using-Vibration-Toolbox">Estimated Displacement vs Time using Vibration Toolbox</a></li>
-<li><a class="reference internal" href="#Mode-Shapes-for-Cantilever-Beam:-(from-table-6.6-in-the-text)">Mode Shapes for Cantilever Beam: (from table 6.6 in the text)</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#Beam-Properties">Beam Properties</a></li>
+<li><a class="reference internal" href="#Acceleration-vs-Time-plot">Acceleration vs Time plot</a></li>
+<li><a class="reference internal" href="#Log-Decrement-Method">Log Decrement Method</a></li>
+<li><a class="reference internal" href="#Using-Vibration-toolbox-for-comparison">Using Vibration toolbox for comparison</a></li>
+<li><a class="reference internal" href="#3-Mode-shapes">3 Mode shapes</a></li>
 </ul>
 </li>
 </ul>
