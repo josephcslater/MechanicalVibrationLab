@@ -3,3 +3,9 @@ Untitled*
 _images
 _sources
 /.project
+
+.pyc
+
+source/labnotes/.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
+*checkpoints*
