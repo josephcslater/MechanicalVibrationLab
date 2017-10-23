@@ -5,4 +5,11 @@ _sources
 *checkpoint*
 /.project
 
+
 *checkpoint.ipynb
+.pyc
+source/labnotes/.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
+*checkpoints*
+*checkpoint.ipynb
+
