@@ -2,11 +2,14 @@ _build
 Untitled*
 _images
 _sources
+*checkpoint*
 /.project
 
-.pyc
 
+*checkpoint.ipynb
+.pyc
 source/labnotes/.ipynb_checkpoints/*
 */.ipynb_checkpoints/*
 *checkpoints*
 *checkpoint.ipynb
+
