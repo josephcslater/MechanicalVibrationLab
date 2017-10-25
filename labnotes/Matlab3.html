@@ -207,63 +207,34 @@ div.nboutput div.output_area.stderr {
 <h1>Lab 3: Computation of Rotating Unbalance<a class="headerlink" href="#Lab-3:-Computation-of-Rotating-Unbalance" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [61]:
+<span></span>In [18]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
 <span></span><span class="n">clear</span> <span class="n">all</span>
 <span class="n">close</span> <span class="n">all</span>
 <span class="n">clc</span>
+<span class="n">imatlab_export_fig</span><span class="p">(</span><span class="s">&#39;print-png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="Using-Vibration-Toolbox">
-<h2>Using Vibration Toolbox<a class="headerlink" href="#Using-Vibration-Toolbox" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [62]:
-</pre></div>
-</div>
-<div class="input_area highlight-matlab"><div class="highlight"><pre>
-<span></span><span class="n">load</span><span class="p">(</span><span class="s">&#39;Case3-1&#39;</span><span class="p">)</span>
-<span class="n">Fmin</span><span class="p">=</span><span class="mi">200</span><span class="p">;</span>
-<span class="n">Fmax</span><span class="p">=</span><span class="mi">230</span><span class="p">;</span>
-<span class="n">sdofcf</span><span class="p">(</span><span class="n">Freq_domain</span><span class="p">,</span><span class="n">Hf_chan_2</span><span class="p">,</span><span class="n">Fmin</span><span class="p">,</span><span class="n">Fmax</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&gt; In sdofcf (line 107)
-Warning: Rank deficient, rank = 4, tol =  8.198982e+03.
-&gt; In sdofcf (line 129)
-Warning: Rank deficient, rank = 3, tol =  3.271103e-03.
-zeta = 0.0020271
-f = 206.94 Hz.
-amplitude = 0.
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [63]:
+<span></span>In [5]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
-<span></span><span class="n">zeta</span> <span class="p">=</span> <span class="mf">0.0020271</span><span class="p">;</span>
+<span></span><span class="c">% Obtained from curve fitting sdofcf</span>
+<span class="n">zeta</span> <span class="p">=</span> <span class="mf">0.0020271</span><span class="p">;</span>
 <span class="n">f</span> <span class="p">=</span> <span class="mf">206.94</span><span class="p">;</span> <span class="c">% second natural frequency in Hz</span>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="Power-Spectrum-Density-plot">
 <h2>Power Spectrum Density plot<a class="headerlink" href="#Power-Spectrum-Density-plot" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [64]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -280,12 +251,19 @@ amplitude = 0.
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Matlab3_4_0.png" src="../_images/labnotes_Matlab3_4_0.png" />
+</div>
+</div>
 </div>
 <div class="section" id="Experimental-Data-Analysis">
 <h2>Experimental Data Analysis<a class="headerlink" href="#Experimental-Data-Analysis" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [65]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -313,7 +291,7 @@ wr =
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [70]:
+<span></span>In [8]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -339,9 +317,9 @@ h =
 </div>
 <div class="section" id="Acceleration-Response-Plot">
 <h2>Acceleration Response Plot<a class="headerlink" href="#Acceleration-Response-Plot" title="Permalink to this headline">¶</a></h2>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [71]:
+<span></span>In [9]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -356,12 +334,19 @@ h =
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/labnotes_Matlab3_9_0.png" src="../_images/labnotes_Matlab3_9_0.png" />
+</div>
+</div>
 </div>
 <div class="section" id="Data-Analysis">
 <h2>Data Analysis<a class="headerlink" href="#Data-Analysis" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [77]:
+<span></span>In [10]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -386,7 +371,7 @@ Xmax =
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [73]:
+<span></span>In [11]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -410,7 +395,7 @@ r =
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [74]:
+<span></span>In [12]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -437,7 +422,7 @@ moe =
 <h2>Beam Properties<a class="headerlink" href="#Beam-Properties" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [75]:
+<span></span>In [13]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -468,7 +453,7 @@ m =
 <h2>Analytical rotating unbalance<a class="headerlink" href="#Analytical-rotating-unbalance" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none"><div class="highlight"><pre>
-<span></span>In [76]:
+<span></span>In [14]:
 </pre></div>
 </div>
 <div class="input_area highlight-matlab"><div class="highlight"><pre>
@@ -502,7 +487,6 @@ moeA =
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Lab 3: Computation of Rotating Unbalance</a><ul>
-<li><a class="reference internal" href="#Using-Vibration-Toolbox">Using Vibration Toolbox</a></li>
 <li><a class="reference internal" href="#Power-Spectrum-Density-plot">Power Spectrum Density plot</a></li>
 <li><a class="reference internal" href="#Experimental-Data-Analysis">Experimental Data Analysis</a></li>
 <li><a class="reference internal" href="#Acceleration-Response-Plot">Acceleration Response Plot</a></li>
